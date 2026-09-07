@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme inline {
+    --color-primary: var(--primary);
+    --color-background: var(--background);
+    --accent: var(--color-accent);
+}
+
+:root {
+    --primary: #DFDACB;
+    --background: #090E1F;
+    --accent: #6387cf;
+}
+
+@layer base {
+    body {
+        @apply bg-background text-primary;
+    }
+}
