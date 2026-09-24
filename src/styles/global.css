@@ -10,6 +10,7 @@
     --font-sans: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
     --font-mono: "JetBrains Mono Variable", ui-monospace, SFMono-Regular, Menlo,
         Consolas, "Liberation Mono", monospace;
+    --color-accent: #6387cf;
 }
 
 :root {

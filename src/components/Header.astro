@@ -1,0 +1,61 @@
+---
+const GH_URL = "https://github.com/nievasys";
+const LI_URL = "https://www.linkedin.com/in/agustin-nieva/";
+
+import GithubSvg from "../assets/svg/Github.svg?raw";
+import LinkedinSvg from "../assets/svg/Linkedin.svg?raw";
+---
+
+<header class="sticky top-0 z-10 bg-background/80 backdrop-blur font-mono">
+	<nav
+		class="mx-auto flex w-full max-w-5xl items-center justify-between gap-4 px-6 py-4 text-sm"
+		aria-label="Principal"
+	>
+		<div class="flex items-center gap-2 md:gap-3">
+			<a href="/" class="font-medium text-primary">nieva agustin</a>
+			<span class="text-primary/40 select-none" aria-hidden="true">|</span>
+			<a href="/" class="text-primary/70 hover:text-accent" aria-current="page">
+				inicio
+			</a>
+			<span class="text-primary/40 select-none" aria-hidden="true">|</span>
+			<a href="/#proyectos" class="text-primary/70 hover:text-accent">
+				proyectos
+			</a>
+		</div>
+
+		<div class="flex items-center gap-3 md:gap-4">
+			<div class="flex items-center gap-1 text-primary/70">
+				<a href="/" class="font-medium text-accent" aria-current="page">es</a>
+				<span class="text-primary/40 select-none" aria-hidden="true">/</span>
+				<a href="/en" class="hover:text-accent">en</a>
+			</div>
+
+			<span class="h-4 w-px bg-primary/20" aria-hidden="true"></span>
+
+			<div class="flex items-center gap-3">
+				<a
+					href={GH_URL}
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label="GitHub de nieva agustin"
+					class="text-primary/80 transition-colors hover:text-accent"
+				>
+					<span class="block [&_svg]:h-5 [&_svg]:w-5" aria-hidden="true">
+						<Fragment set:html={GithubSvg} />
+					</span>
+				</a>
+				<a
+					href={LI_URL}
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label="LinkedIn de nieva agustin"
+					class="text-primary/80 transition-colors hover:text-accent"
+				>
+					<span class="block [&_svg]:h-5 [&_svg]:w-5" aria-hidden="true">
+						<Fragment set:html={LinkedinSvg} />
+					</span>
+				</a>
+			</div>
+		</div>
+	</nav>
+</header>
