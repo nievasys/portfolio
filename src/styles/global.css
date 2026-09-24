@@ -6,6 +6,12 @@
     --accent: var(--color-accent);
 }
 
+@theme {
+    --font-sans: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
+    --font-mono: "JetBrains Mono Variable", ui-monospace, SFMono-Regular, Menlo,
+        Consolas, "Liberation Mono", monospace;
+}
+
 :root {
     --primary: #DFDACB;
     --background: #090E1F;
@@ -15,5 +21,18 @@
 @layer base {
     body {
         @apply bg-background text-primary;
+    }
+
+    .text-gradient-accent {
+        background: linear-gradient(
+            90deg,
+            color-mix(in srgb, var(--accent) 55%, black) 0%,
+            var(--accent) 45%,
+            color-mix(in srgb, var(--accent) 35%, white) 100%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
     }
 }
