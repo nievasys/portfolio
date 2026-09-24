@@ -3,7 +3,7 @@ import ASCIIAnimation from "./ascii-animation.tsx";
 ---
 
 <main
-  class="relative flex flex-col items-center justify-center min-h-screen overflow-hidden"
+  class="relative flex min-h-screen flex-col items-center justify-center"
 >
   <div class="flex items-center justify-center pointer-events-none">
     <pre>
@@ -27,4 +27,43 @@ import ASCIIAnimation from "./ascii-animation.tsx";
     </a>
     </pre>
   </div>
+
+  <section
+    class="mt-10 flex w-full max-w-5xl items-start justify-center gap-6 px-6 font-mono"
+  >
+    <pre aria-hidden="true" class="select-none leading-none text-primary">
+░██
+░██
+░██
+░██
+░██
+░██
+░██
+░██
+    </pre>
+
+    <h1 class="flex flex-col gap-2 text-left leading-none">
+      <span class="text-2xl font-bold text-primary sm:text-3xl">
+        nieva agustin
+      </span>
+      <span class="text-primary/70">software developer</span>
+      <span class="text-primary/70">
+        currently building
+        <span aria-hidden="true" class="text-primary/40">|</span>
+        <a
+          href="https://github.com/nievasys/matrifermoldes-web"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-accent transition-colors hover:underline"
+        >
+          matrifermoldes-web
+        </a>
+      </span>
+      <span class="text-primary/70">
+        buenos aires
+        <span aria-hidden="true" class="text-primary/40">|</span>
+        argentina
+      </span>
+    </h1>
+  </section>
 </main>
