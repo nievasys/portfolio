@@ -1,7 +1,30 @@
 ---
+import ASCIIAnimation from "./ascii-animation.tsx";
 ---
-<div>
-    <p class="text-2xl font-bold text-center">
-        hello world
-    </p>
-</div>
+
+<main
+  class="relative flex flex-col items-center justify-center min-h-screen overflow-hidden"
+>
+  <div class="flex items-center justify-center pointer-events-none">
+    <pre>
+ <ASCIIAnimation fps={30} colorOverlay={true} client:visible size="10px" />
+    </pre>
+  </div>
+
+  <div class="flex flex-col text-center">
+    <pre
+      class="leading-none">
+    <a href="/">
+           ░██                                                                      
+                                                                                    
+░████████  ░██ ░███████  ░██    ░██  ░██████        ░███████  ░██    ░██  ░███████  
+░██    ░██ ░██░██    ░██ ░██    ░██       ░██      ░██        ░██    ░██ ░██        
+░██    ░██ ░██░█████████  ░██  ░██   ░███████       ░███████  ░██    ░██  ░███████  
+░██    ░██ ░██░██          ░██░██   ░██   ░██             ░██ ░██   ░███        ░██ 
+░██    ░██ ░██ ░███████     ░███     ░█████░██ ░██  ░███████   ░█████░██  ░███████  
+                                                                     ░██            
+                                                               ░███████             
+    </a>
+    </pre>
+  </div>
+</main>
