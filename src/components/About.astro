@@ -1,20 +1,22 @@
 ---
 import ASCIIAnimation from "./ascii-animation.tsx";
+import { useTranslations } from "../i18n/ui";
+
+const t = useTranslations(Astro.currentLocale);
 ---
 
 <main
-  class="relative flex min-h-screen flex-col items-center justify-center"
+  class="relative flex min-h-[calc(100svh_-_12rem)] flex-col items-center justify-center"
 >
-  <div class="flex items-center justify-center pointer-events-none">
+  <div class="flex w-full items-center justify-center overflow-hidden pointer-events-none">
     <pre>
- <ASCIIAnimation fps={30} colorOverlay={true} client:visible size="10px" />
+ <ASCIIAnimation fps={30} colorOverlay={true} client:visible size="clamp(3.5px,1.4vw,10px)" />
     </pre>
   </div>
 
   <div class="flex flex-col text-center">
     <pre
-      class="leading-none">
-    <a href="/">
+      class="leading-none text-[clamp(6px,2vw,0.875rem)]">
            ░██                                                                      
                                                                                     
 ░████████  ░██ ░███████  ░██    ░██  ░██████        ░███████  ░██    ░██  ░███████  
@@ -24,14 +26,16 @@ import ASCIIAnimation from "./ascii-animation.tsx";
 ░██    ░██ ░██ ░███████     ░███     ░█████░██ ░██  ░███████   ░█████░██  ░███████  
                                                                      ░██            
                                                                ░███████             
-    </a>
     </pre>
   </div>
 
   <section
-    class="mt-10 flex w-full max-w-5xl items-start justify-center gap-6 px-6 font-mono"
+    class="mt-10 flex w-full max-w-5xl items-start justify-center gap-4 px-4 font-mono sm:gap-6 sm:px-6"
   >
-    <pre aria-hidden="true" class="select-none leading-none text-primary">
+    <pre
+      aria-hidden="true"
+      class="hidden select-none leading-none text-primary sm:block"
+    >
 ░██
 ░██
 ░██
@@ -46,9 +50,9 @@ import ASCIIAnimation from "./ascii-animation.tsx";
       <span class="text-2xl font-bold text-primary sm:text-3xl">
         nieva agustin
       </span>
-      <span class="text-primary/70">software developer</span>
+      <span class="text-primary/70">{t.about.role}</span>
       <span class="text-primary/70">
-        currently building
+        {t.about.currently}
         <span aria-hidden="true" class="text-primary/40">|</span>
         <a
           href="https://github.com/nievasys/matrifermoldes-web"
@@ -60,9 +64,9 @@ import ASCIIAnimation from "./ascii-animation.tsx";
         </a>
       </span>
       <span class="text-primary/70">
-        buenos aires
+        {t.about.city}
         <span aria-hidden="true" class="text-primary/40">|</span>
-        argentina
+        {t.about.country}
       </span>
     </h1>
   </section>

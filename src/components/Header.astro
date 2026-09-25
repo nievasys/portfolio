@@ -2,42 +2,80 @@
 const GH_URL = "https://github.com/nievasys";
 const LI_URL = "https://www.linkedin.com/in/agustin-nieva/";
 
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { languages, useTranslations } from "../i18n/ui";
 import GithubSvg from "../assets/svg/Github.svg?raw";
 import LinkedinSvg from "../assets/svg/Linkedin.svg?raw";
+
+const currentLocale = Astro.currentLocale;
+const t = useTranslations(currentLocale);
+const localeLinks = Object.keys(languages).map((locale) => ({
+  locale,
+  href: getRelativeLocaleUrl(locale)
+}));
 ---
 
 <header class="sticky top-0 z-10 bg-background/80 backdrop-blur font-mono">
 	<nav
-		class="mx-auto flex w-full max-w-5xl items-center justify-between gap-4 px-6 py-4 text-sm"
-		aria-label="Principal"
+		class="mx-auto flex w-full max-w-5xl flex-wrap items-center justify-between gap-x-3 gap-y-2 px-3 py-4 text-xs font-mono sm:gap-x-4 sm:px-6 sm:text-sm"
+		aria-label={t.nav.ariaLabel}
 	>
-		<div class="flex items-center gap-2 md:gap-3">
+		<div class="flex min-w-0 items-center gap-1.5 sm:gap-3">
 			<a href="/" class="font-medium text-primary">nieva agustin</a>
 			<span class="text-primary/40 select-none" aria-hidden="true">|</span>
-			<a href="/" class="text-primary/70 hover:text-accent" aria-current="page">
-				inicio
+			<a
+				href={t.cv}
+				target="_blank"
+				rel="noopener noreferrer"
+				class="text-primary/70 hover:text-accent"
+			>
+				{t.nav.cv}
 			</a>
 			<span class="text-primary/40 select-none" aria-hidden="true">|</span>
-			<a href="/#proyectos" class="text-primary/70 hover:text-accent">
-				proyectos
+			<a
+				href={GH_URL}
+				target="_blank"
+				rel="noopener noreferrer"
+				class="text-primary/70 hover:text-accent"
+			>
+				{t.nav.proyectos}
 			</a>
 		</div>
 
-		<div class="flex items-center gap-3 md:gap-4">
+		<div class="flex min-w-0 items-center gap-2 sm:gap-4">
 			<div class="flex items-center gap-1 text-primary/70">
-				<a href="/" class="font-medium text-accent" aria-current="page">es</a>
-				<span class="text-primary/40 select-none" aria-hidden="true">/</span>
-				<a href="/en" class="hover:text-accent">en</a>
+				{localeLinks.map(({ locale, href }) => (
+					<Fragment>
+						<a
+							href={href}
+							class:list={{
+								"font-medium text-accent": locale === currentLocale,
+								"hover:text-accent": locale !== currentLocale
+							}}
+							aria-current={locale === currentLocale ? "page" : undefined}
+						>
+							{locale}
+						</a>
+						{locale !== "en" && (
+							<span
+								class="text-primary/40 select-none"
+								aria-hidden="true"
+							>
+								/
+							</span>
+						)}
+					</Fragment>
+				))}
 			</div>
 
 			<span class="h-4 w-px bg-primary/20" aria-hidden="true"></span>
 
-			<div class="flex items-center gap-3">
+			<div class="flex items-center gap-2">
 				<a
 					href={GH_URL}
 					target="_blank"
 					rel="noopener noreferrer"
-					aria-label="GitHub de nieva agustin"
+					aria-label={t.social.github}
 					class="text-primary/80 transition-colors hover:text-accent"
 				>
 					<span class="block [&_svg]:h-5 [&_svg]:w-5" aria-hidden="true">
@@ -48,7 +86,7 @@ import LinkedinSvg from "../assets/svg/Linkedin.svg?raw";
 					href={LI_URL}
 					target="_blank"
 					rel="noopener noreferrer"
-					aria-label="LinkedIn de nieva agustin"
+					aria-label={t.social.linkedin}
 					class="text-primary/80 transition-colors hover:text-accent"
 				>
 					<span class="block [&_svg]:h-5 [&_svg]:w-5" aria-hidden="true">
